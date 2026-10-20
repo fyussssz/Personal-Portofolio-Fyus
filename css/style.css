@@ -197,7 +197,7 @@ button:hover{
 #contact{
     padding: 60px 20px;
     text-align: center;
-    background-color: #1e293b;
+    background-color: #0f172a;
 }
 
 #contact h2{
@@ -399,4 +399,17 @@ ul{
 
 #navbar a:hover{
     color: #38bdf8;
+}
+
+.footer {
+    background-color: #0b1120;
+    padding: 25px 20px;
+    text-align: center;
+    border-top: 1px solid #334155;
+}
+
+.footer p{
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 0;
 }
