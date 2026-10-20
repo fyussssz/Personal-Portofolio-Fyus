@@ -62,3 +62,28 @@ const revealObserver = new IntersectionObserver((entries) =>{
 revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
+
+
+/* Hamburger Menu */
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.querySelector("#navbar ul");
+const navLinks = navMenu.querySelectorAll("a");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+    updateMenuButton();
+});
+
+function updateMenuButton() {
+    const isExpanded = navMenu.classList.contains("show");
+
+    menuToggle.setAttribute("aria-expanded", isExpanded);
+    menuToggle.textContent = isExpanded ? "✕" : "☰";
+}
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("show");
+        updateMenuButton();
+    });
+});

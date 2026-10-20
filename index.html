@@ -8,6 +8,13 @@
 </head>
 <body>
     <nav id="navbar">
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+        >☰</button>
+
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -68,23 +75,56 @@
 </section>
 <section id="projects" class="reveal">
     <h2>My Project</h2>
+    <p class="projects-description">
+        Beberapa project yang sedang saya kembangkan
+        untuk meningkatkan kemampuan programming.
+    </p>
+
     <div class="projects-container">
+
         <div class="project-card">
+            <div class="project-content">
+                <span class="project-category">WEB DEVELOPMENT</span>
             <h3>Portofolio</h3>
+
             <p>
-                website portofolio pribadi yang saya bangun
-                menggunakan html dan css.
+                Website portfolio pribadi untuk memperkenalkan
+                diri, menampilkan kemampuan, dan mendokumentasikan
+                perjalanan belajar saya di bidang web development.
             </p>
-            <span> HTML & CSS</span>
+
+            <div class="project-tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
         </div>
+
+            <a href="#home" class="view-project">
+                View Project <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </div>
+
         <div class="project-card">
-            <h3>RootFlow IoT</h3>
-            <p>projek penyiraman tanaman lahan tani
-                otomatis berbasis IoT untuk memantau kelembapan tanah.
-                <span>IoT-ESP32-Sensor</span>
-            </p>
+            <div class="project-content">
+                <span class="project-category"> INTERNET OF THINGS</span>
+                <h3>RootFlow IoT</h3>
+                <p> projek penyiraman tanaman lahan tani
+                    otomatis berbasis IoT untuk memantau kelembapan tanah.
+                </p>
+                <div class="project-tech">
+                    <span>ESP32</span>
+                    <span>Sensor</span>
+                    <span>IoT</span>
+                </div>    
+                <a href="mailto:muhammadfairusa10@gmail.com?subject=RootFlow%20IoT"
+                   class="view-project">
+                    View Project <span aria-hidden="true">↗</span>
+                </a>
+            </div>
         </div>
-    </div>        
+        
+    </div>    
 </section>
 <section id="contact">
 
