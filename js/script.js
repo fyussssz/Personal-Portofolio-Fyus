@@ -87,3 +87,29 @@ navLinks.forEach((link) => {
         updateMenuButton();
     });
 });
+
+/* Active Navbar Link */
+const pageSections = document.querySelectorAll(
+    "#home, #about, #skills, #projects, #contact"
+);
+
+const navbarLinks = document.querySelectorAll("#navbar ul a");
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            navbarLinks.forEach((link) => {
+                link.classList.toggle(
+                    "active-link",
+                    link.getAttribute("href") === `#${entry.target.id}`
+                );
+            });
+        }
+    });
+}, {
+    rootMargin: "-30% 0px -60% 0px"
+});
+
+pageSections.forEach((section) => {
+    sectionObserver.observe(section);
+});
