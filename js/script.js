@@ -63,53 +63,74 @@ revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
 
-
 /* Hamburger Menu */
 const menuToggle = document.getElementById("menu-toggle");
 const navMenu = document.querySelector("#navbar ul");
 const navLinks = navMenu.querySelectorAll("a");
 
 menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
-    updateMenuButton();
+    const isOpen = navMenu.classList.toggle("show");
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+    );
+
+    menuToggle.textContent = isOpen ? "✕" : "☰";
 });
 
-function updateMenuButton() {
-    const isExpanded = navMenu.classList.contains("show");
-
-    menuToggle.setAttribute("aria-expanded", isExpanded);
-    menuToggle.textContent = isExpanded ? "✕" : "☰";
-}
-
+/* Tutup menu setelah link dipilih */
 navLinks.forEach((link) => {
     link.addEventListener("click", () => {
         navMenu.classList.remove("show");
-        updateMenuButton();
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute(
+            "aria-label",
+            "Buka menu navigasi"
+        );
+
+        menuToggle.textContent = "☰";
     });
 });
 
-/* Active Navbar Link */
-const pageSections = document.querySelectorAll(
+/* Active Navigation Link */
+const sections = document.querySelectorAll(
     "#home, #about, #skills, #projects, #contact"
 );
 
-const navbarLinks = document.querySelectorAll("#navbar ul a");
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                navLinks.forEach((link) => {
+                    link.classList.toggle(
+                        "active-link",
+                        link.getAttribute("href") ===
+                            `#${entry.target.id}`
+                    );
+                });
+            }
+        });
+    },
+    {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: 0
+    }
+);
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            navbarLinks.forEach((link) => {
-                link.classList.toggle(
-                    "active-link",
-                    link.getAttribute("href") === `#${entry.target.id}`
-                );
-            });
-        }
-    });
-}, {
-    rootMargin: "-30% 0px -60% 0px"
+sections.forEach((section) => {
+    sectionObserver.observe(section);
 });
 
-pageSections.forEach((section) => {
-    sectionObserver.observe(section);
+/* Tombol Back to Top */
+const backToTop = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+    backToTop.classList.toggle("show", window.scrollY > 400);
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });

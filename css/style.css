@@ -1,3 +1,12 @@
+:root{
+    --bg: #0f172a;
+    --bg-soft: #1e293b;
+    --border: #334155;
+    --accent: #38bdf8;
+    --accent-2: #818cf8;
+    --text: #cbd5e1;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -44,7 +53,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(ellipse at top, rgba(56, 189, 248, 0,10),
+    background: radial-gradient(ellipse at top, rgba(56, 189, 248, 0.10),
     transparent 60%
     ), #0f172a;
 }
@@ -83,19 +92,12 @@ button:hover{
     text-align: center;
 }
 
-#skills h2{
-    color: #38bdf8;
-    font-size: 32px;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-} 
-
 .skills-container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
-    max-width: 1000px;
+    max-width: 640px;
     margin: 0 auto;
 }
 
@@ -143,12 +145,12 @@ button:hover{
     display: inline-block;
     background: linear-gradient(135deg,#2563eb, #38bdf8);
     color: white;
-    padding: 14px 28px;
+    padding: 16px 36px;
     margin-top: 20px;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 0.3px;
     border: 1px solid rgba(125, 211, 252, 0.3);
     box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
@@ -159,13 +161,6 @@ button:hover{
     transform: translateY(-4px);
     border-color: #7dd3fc;
     box-shadow: 0 12px 30px rgba(56, 189, 248, 0.3);
-}
-
-#about h2{
-    color: #38bdf8;
-    font-size: 32px;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
 }
 
 .about-text h3{
@@ -182,7 +177,7 @@ button:hover{
 }
 
 @media (max-width: 600px) {
-    #about h2 {
+    .about h2 {
         font-size: 28px;
         margin-bottom: 25px;
     }
@@ -253,13 +248,6 @@ button:hover{
     background-color: #0f172a;
 }
 
-#contact h2{
-    color: #38bdf8;
-    font-size: 32px;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-}
-
 #contact p{
     color: #cbd5e1;
     line-height: 1.6;
@@ -293,6 +281,13 @@ button:hover{
     background-color: #1e293b;
 }
 
+#about h2{
+    color: var(--accent);
+    font-size: 32px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
 ul{
     list-style-type: none;
     margin: 0;
@@ -305,19 +300,30 @@ ul{
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     #home {
-        padding: 75px 20px 90px;
+        padding: 100px 20px 90px;
+        min-height: 80vh;
     }
 
     #home h1 {
-        font-size: 28px;
-        letter-spacing: -0.5px;
+        font-size: clamp(30px, 7vw, 42px);
+        letter-spacing: -0.8px;
     }
 
     #home p {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    #home .typing-text{
+        font-size: 19px;
+    }
+
+    .project-button{
+        padding: 14px 28px;
+        font-size: 15px;
     }
 
 .skill-card {width: 100%; max-width: 350px; padding: 25px;}
@@ -339,41 +345,8 @@ ul{
 
 }
 
-.navbar{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: #1e293b;
-}
-
-.container{
-    width: 90%;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.nav-wrapper{
-    min-height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo{
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-}
-
 .logo span{
     color: #38bdf8;
-}
-
-.nav-menu{
-    display: flex;
-    align-items: center;
-    gap: 25px;
 }
 
 .nav-menu a{
@@ -384,12 +357,6 @@ ul{
 
 .nav-menu a:hover{
     color: #38bdf8;
-}
-
-.nav-contact{
-    border: 1px solid #38bdf8;
-    padding: 8px 15px;
-    border-radius: 8px;
 }
 
 @keyframes fadeInUp {
@@ -404,15 +371,20 @@ ul{
     }
 }
 
-#home h1 {animation: fadeInUp 0.8s ease-out 0.4s both;}
+#home h1 {animation: fadeInUp 0.8s ease-out 0.4s both,
+            gradientMove 6s linear infinite;
+}
 
 #home .project-button {
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
-.typing-text{
-    font-size: 24px;
+#home .typing-text{
+    font-size: 22px;
     font-weight: bold;
+    color: #e2e8f0;
+    margin-top: 4px;
+    margin-bottom: 28px;
 }
 
 #typing{
@@ -447,8 +419,7 @@ ul{
 }
 
 #navbar a:hover{
-    color: #38bdf8;
-    font-weight: bold;
+    color: var(--accent);
 }
 
 #navbar ul a.active-link{
@@ -478,29 +449,6 @@ ul{
 
 .footer:hover p{
     color: #cbd5e1;
-}
-
-@media (max-width: 600px) {
-    .nav-wrapper{
-        flex-direction: column;
-        justify-content: center;
-        gap: 15px;
-        padding: 15px 0;
-    }
-
-    .nav-menu{
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .nav-menu a{
-        font-size: 14px;
-    }
-
-    .nav-contact{
-        padding: 6px 10px;
-    }
 }
 
 .menu-toggle {
@@ -547,14 +495,6 @@ ul{
 
 #projects {padding: 70px 20px; text-align: center;
 background-color: #0f172a;}
-
-#projects h2 {
-color: #38bdf8;
-font-size: 32px;
-line-height: 1.3;
-letter-spacing: -0.5px;
-margin-bottom: 12px;
-}
 
 .projects-description {
     color: #cbd5e1;
@@ -699,4 +639,150 @@ line-height: 1.4; margin: 14px 0 10px;}
         font-size: 11px;
         padding: 8px 10px;
     }
+}
+
+section h2{
+    color: var(--accent);
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    margin: 0 0 40px;
+    display: inline-block;
+}
+
+section h2::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 10px auto 0;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+#navbar{
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+#navbar ul{
+    background: transparent;
+}
+
+#navbar ul a{
+    position: relative;
+    padding: 6px 0;
+}
+
+#navbar ul a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+#navbar ul a:hover::after,
+#navbar ul a.active-link::after{
+    width: 100%;
+}
+
+@keyframes gradientMove{
+    to{
+        background-position: 200% center;
+    }
+}
+
+.skill-icon{
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.skill-bar{
+    height: 6px;
+    margin-top: 16px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.skill-bar span{
+    display: block;
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s ease 0.3s;
+}
+
+#skills.active .skill-bar span{
+    transform: scaleX(1);
+}
+
+
+.skill-card:nth-child(2) .skill-bar span{ transition-delay: 0.45s; }
+.skill-card:nth-child(3) .skill-bar span{ transition-delay: 0.6s; }
+.skill-card:nth-child(4) .skill-bar span{ transition-delay: 0.75s; }
+.skill-card:nth-child(5) .skill-bar span{ transition-delay: 0.9s; }
+.skill-card:nth-child(6) .skill-bar span{ transition-delay: 1.05s; }
+
+#back-to-top{
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, var(--accent));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease,
+                transform 0.3s ease;
+    z-index: 100;
+}
+
+#back-to-top.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top:hover{
+    transform: translateY(-4px);
+}
+
+.social-links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.social-links a{
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 9px 18px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    transition: border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.social-links a:hover{
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-3px);
 }
