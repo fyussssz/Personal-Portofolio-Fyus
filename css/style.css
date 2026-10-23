@@ -1,10 +1,39 @@
 :root{
-    --bg: #0f172a;
-    --bg-soft: #1e293b;
-    --border: #334155;
-    --accent: #38bdf8;
-    --accent-2: #818cf8;
-    --text: #cbd5e1;
+    --bg: #1a2338;
+    --bg-soft: #243049;
+    --border: #3b4a66;
+    --accent: #5ccbff;
+    --accent-2: #a5b4fc;
+    --text: #e2e8f0;
+
+    --text-strong: #ffffff;
+    --muted: #aab6c8;
+    --card: #263350;
+    --card-2: #202c46;
+    --chip-bg: rgba(26, 35, 56, 0.7);
+    --chip-text: #9ddcff;
+    --nav-bg: rgba(26, 35, 56, 0.85);
+    --footer-bg: #151d30;
+    --glow: rgba(92, 203, 255, 0.18);
+}
+
+:root[data-theme="light"]{
+    --bg: #f8fafc;
+    --bg-soft: #e8eef6;
+    --border: #cbd5e1;
+    --accent: #0284c7;
+    --accent-2: #6366f1;
+    --text: #475569;
+
+    --text-strong: #0f172a;
+    --muted: #64748b;
+    --card: #ffffff;
+    --card-2: #f1f5f9;
+    --chip-bg: rgba(255, 255, 255, 0.9);
+    --chip-text: #0369a1;
+    --nav-bg: rgba(248, 250, 252, 0.85);
+    --footer-bg: #e2e8f0;
+    --glow: rgba(2, 132, 199, 0.12);
 }
 
 *{
@@ -343,20 +372,6 @@ ul{
         max-width: 100%;
     }
 
-}
-
-.logo span{
-    color: #38bdf8;
-}
-
-.nav-menu a{
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.nav-menu a:hover{
-    color: #38bdf8;
 }
 
 @keyframes fadeInUp {
@@ -818,4 +833,327 @@ section h2::after{
     .project-content{
         padding: 22px;
     }
+}
+
+.social-links a{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-links svg{
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ===== Tema terang/gelap ===== */
+body{ background: var(--bg); color: var(--text-strong); }
+
+#home{
+    background: radial-gradient(ellipse at top, var(--glow), transparent 60%), var(--bg);
+}
+#home p{ color: var(--text); }
+#home .typing-text{ color: var(--text-strong); }
+
+#about{ background: var(--bg-soft); }
+#projects, #contact{ background: var(--bg); }
+
+#contact p,
+.projects-description,
+.about-text p,
+.skill-card p,
+.project-card p{ color: var(--text); }
+
+.skill-card{
+    background: linear-gradient(145deg, var(--card), var(--card-2));
+}
+.skill-card h3,
+.about-text h3{ color: var(--accent); }
+
+.project-card{ background: var(--card); }
+.project-card h3{ color: var(--text-strong); }
+.project-card span{ color: var(--accent); }
+.view-project{ color: var(--accent); }
+.view-project:hover{ color: var(--text-strong); }
+
+.project-tech span,
+.about-interests span{
+    background: var(--chip-bg);
+    color: var(--chip-text);
+}
+.project-tech span:hover{ color: var(--text-strong); }
+
+.social-links a{ background: var(--chip-bg); }
+.social-links a:hover{ color: var(--text-strong); }
+
+#navbar{ background: var(--nav-bg); }
+#navbar a{ color: var(--text-strong); }
+#navbar a:hover,
+#navbar ul a.active-link{ color: var(--accent); }
+.menu-toggle{ color: var(--text-strong); }
+
+.footer{ background: var(--footer-bg); }
+.footer p{ color: var(--muted); }
+.footer:hover p{ color: var(--text); }
+
+/* Tombol toggle tema */
+#theme-toggle{
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+#theme-toggle:hover{
+    background: transparent;
+    border-color: var(--accent);
+    transform: rotate(20deg);
+}
+
+body, #about, #projects, #contact, .skill-card, .project-card, #navbar, .footer{
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.about-facts{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.fact{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.fact:hover{
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.fact strong{
+    display: block;
+    color: var(--accent);
+    font-size: 16px;
+}
+
+.fact span{
+    color: var(--muted);
+    font-size: 12px;
+}
+
+@media (max-width: 600px){
+    .about-facts{
+        text-align: center;
+    }
+}
+
+.footer{
+    padding: 50px 20px 24px;
+}
+
+.footer-grid{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto 36px;
+    text-align: left;
+}
+
+.footer-col h4{
+    color: var(--accent);
+    font-size: 16px;
+    margin: 0 0 14px;
+}
+
+.footer-col p{
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-col a{
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-col a:hover{
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+.footer-copy{
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px){
+    .footer-grid{
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+    }
+
+    .footer-col a:hover{
+        transform: none;
+    }
+}
+
+#loader{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: var(--bg);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    animation: loaderFallback 0.5s ease 4s forwards;
+}
+
+#loader.hide{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo{
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.loader-bar{
+    width: 180px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.loader-bar span{
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: loaderFill 1s ease forwards;
+}
+
+#loader p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+@keyframes loaderFill{
+    to{ transform: scaleX(1); }
+}
+
+@keyframes loaderFallback{
+    to{ opacity: 0; visibility: hidden; }
+}
+
+.contact-form{
+    max-width: 520px;
+    margin: 0 auto 32px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-form label{
+    color: var(--text);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width: 100%;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-strong);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form textarea{
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.contact-form button{
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.contact-form button:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hp-field{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+#form-status{
+    min-height: 22px;
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#form-status.success{ color: #22c55e; }
+#form-status.error{ color: #ef4444; }
+
+#home{
+    background:
+        radial-gradient(circle at 20% 20%, rgba(92, 203, 255, 0.22), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(165, 180, 252, 0.20), transparent 45%),
+        var(--bg);
+}
+
+#about, #skills, #projects, #contact{
+    background:
+        radial-gradient(circle at 20% 20%, rgba(92, 203, 255, 0.22), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(165, 180, 252, 0.20), transparent 45%),
+        var(--bg);
 }

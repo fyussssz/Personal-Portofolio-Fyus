@@ -134,3 +134,40 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+/* Mode Terang/Gelap */
+const themeToggle = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+
+    themeToggle.textContent = theme === "light" ? "🌙" : "☀️";
+    themeToggle.setAttribute(
+        "aria-label",
+        theme === "light" ? "Aktifkan mode gelap" : "Aktifkan mode terang"
+    );
+
+    try {
+        localStorage.setItem("theme", theme);
+    } catch (e) {}
+}
+
+applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+
+themeToggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    applyTheme(current === "light" ? "dark" : "light");
+});
+
+/* Layar Loading */
+const loader = document.getElementById("loader");
+
+function hideLoader() {
+    loader.classList.add("hide");
+    setTimeout(() => loader.remove(), 600);
+}
+
+window.addEventListener("load", () => {
+    setTimeout(hideLoader, 1000);
+});
+
